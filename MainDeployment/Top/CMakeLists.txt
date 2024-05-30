@@ -19,6 +19,4 @@ set(MOD_DEPS
   Drv/TcpClient
 )
 
-include("${CMAKE_CURRENT_LIST_DIR}/../../RNGLibrary/RNGTopology/RNGTopology.cmake")
-
 register_fprime_module()

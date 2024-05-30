@@ -12,6 +12,7 @@
 // Used for printf functions
 #include <cstdlib>
 
+
 /**
  * \brief print command line help message
  *
@@ -83,7 +84,7 @@ int main(int argc, char* argv[]) {
 
     // Setup, cycle, and teardown topology
     MainDeployment::setupTopology(inputs);
-    MainDeployment::startSimulatedCycle(1000);  // Program loop cycling rate groups at 10Hz
+    MainDeployment::startSimulatedCycle(1000);  // Program loop cycling rate groups at 1Hz
     MainDeployment::teardownTopology(inputs);
     (void)printf("Exiting...\n");
     return 0;

@@ -12,7 +12,19 @@ module RNGTopology {
     instance rateGroup: Svc.ActiveRateGroup base id 0xFF4FF \
         queue size Defaults.QUEUE_SIZE \
         stack size Defaults.STACK_SIZE \
-        priority 150
+        priority 150 \
+        {
+            phase Fpp.ToCpp.Phases.configObjects """
+                NATIVE_INT_TYPE rateGroupContext[Svc::ActiveRateGroup::CONNECTION_COUNT_MAX] = {};
+            """
+
+            phase Fpp.ToCpp.Phases.configComponents """
+            {
+                RNGTopology_rateGroup.configure(ConfigObjects::RNGTopology_rateGroup::rateGroupContext, FW_NUM_ARRAY_ELEMENTS(ConfigObjects::RNGTopology_rateGroup::rateGroupContext));
+                // Fw::Logger::logMsg("[RNGTopology] Rate Group configured");
+            }
+            """
+        }
 
     topology RNGTopology {
         instance rng # RNG component instance

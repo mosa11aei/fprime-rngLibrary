@@ -3,11 +3,7 @@
 
 namespace RNGTopology
 {
-
-    struct TopologyState
-    {
-        U32 clockRate;
-    };
+    struct TopologyState {};
 }
 
 namespace Globals

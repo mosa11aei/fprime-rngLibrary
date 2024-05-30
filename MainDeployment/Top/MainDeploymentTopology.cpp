@@ -7,7 +7,7 @@
 // Provides access to autocoded functions
 #include <MainDeployment/Top/MainDeploymentTopologyAc.hpp>
 #include <MainDeployment/Top/MainDeploymentPacketsAc.hpp>
-#include <RNGLibrary/RNGTopology/RNGTopology.hpp>
+#include <TopologyConfig.hpp>
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
@@ -134,11 +134,6 @@ void configureTopology() {
     configurationTable.entries[2] = {.depth = 100, .priority = 1};
     // Allocation identifier is 0 as the MallocAllocator discards it
     comQueue.configure(configurationTable, 0, mallocator);
-
-    RNGTopology::TopologyState myState;
-    myState.clockRate = 1;
-
-    RNGTopology::configureTopology(myState);
 }
 
 // Public functions for use in main program are namespaced with deployment name MainDeployment
@@ -152,6 +147,8 @@ void setupTopology(const TopologyState& state) {
     connectComponents();
     // Autocoded command registration. Function provided by autocoder.
     regCommands();
+    // configuring our components from implemented phases
+    configComponents(state);
     // Project-specific component configuration. Function provided above. May be inlined, if desired.
     configureTopology();
     // Autocoded parameter loading. Function provided by autocoder.
@@ -165,9 +162,6 @@ void setupTopology(const TopologyState& state) {
         comDriver.configure(state.hostname, state.port);
         comDriver.startSocketTask(name, true, COMM_PRIORITY, Default::STACK_SIZE);
     }
-
-    RNGTopology::TopologyState emptyState;
-    RNGTopology::startTopology(emptyState);
 }
 
 // Variables used for cycle simulation
@@ -208,8 +202,5 @@ void teardownTopology(const TopologyState& state) {
     // Resource deallocation
     cmdSeq.deallocateBuffer(mallocator);
     bufferManager.cleanup();
-
-    RNGTopology::TopologyState emptyState;
-    RNGTopology::teardownTopology(emptyState);
 }
 };  // namespace MainDeployment
