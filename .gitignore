@@ -14,3 +14,7 @@ build-fprime-*
 /.vscode/
 .DS_Store
 *.gcov
+
+
+# F' packages
+/.fprime.packages/

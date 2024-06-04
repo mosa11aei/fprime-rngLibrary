@@ -1,0 +1,10 @@
+packages:
+- name: mosallaei/RandomPackage
+  version: 304dcbc
+project:
+- name: rngLibrary
+- description: A project that implements a library, in which random telemetry is generated
+    per 1Hz clock
+- author: Ali Mosallaei
+registries:
+- http://localhost:5000/static/registry.yaml
