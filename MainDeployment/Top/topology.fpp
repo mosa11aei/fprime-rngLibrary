@@ -107,7 +107,7 @@ module MainDeployment {
 
       # Rate group 3
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
-      rateGroupDriver.CycleOut[3] -> RNGTopology.rateGroup.CycleIn
+      rateGroupDriver.CycleOut[3] -> RNGTopologyConfig.rateGroup.CycleIn
       rateGroup3.RateGroupMemberOut[0] -> $health.Run
       rateGroup3.RateGroupMemberOut[1] -> blockDrv.Sched
       rateGroup3.RateGroupMemberOut[2] -> bufferManager.schedIn

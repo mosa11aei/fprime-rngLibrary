@@ -4,3 +4,4 @@
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components")
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/RNGLibrary/")
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/MainDeployment/")
+add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/SubtopologyConfigs/")

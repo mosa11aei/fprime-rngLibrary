@@ -8,9 +8,9 @@ namespace RNGTopology
 
 namespace Globals
 {
-    namespace PingEntries
+     namespace PingEntries
     {
-        namespace RNGTopology_rateGroup
+        namespace RNGTopologyConfig_rateGroup
         {
             enum
             {
