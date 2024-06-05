@@ -29,6 +29,8 @@ namespace RNGLibrary {
       //! Destroy RNG object
       ~RNG();
 
+      void setInitialSeed(U32 seed);
+
     PRIVATE:
 
       void run_handler(

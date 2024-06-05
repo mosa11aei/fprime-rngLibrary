@@ -26,6 +26,7 @@ namespace MainDeployment {
 struct TopologyState {
     const CHAR* hostname;
     U16 port;
+    RNGTopology::RNGTopologyState RNGTopology_state;
 };
 
 /**

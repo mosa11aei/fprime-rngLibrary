@@ -6,6 +6,7 @@
 
 #include "FpConfig.hpp"
 #include "Fw/Logger/Logger.hpp"
+#include "Os/Log.hpp"
 #include "RNGLibrary/RNG/RNG.hpp"
 #include "random"
 
@@ -24,6 +25,13 @@ namespace RNGLibrary
   RNG ::
       ~RNG()
   {
+  }
+
+  void RNG ::
+      setInitialSeed(U32 seed)
+  {
+    srand(seed);
+    Os::Log::logMsg("[RNG]: Seed initially set to %d\n", seed);
   }
 
   void RNG ::

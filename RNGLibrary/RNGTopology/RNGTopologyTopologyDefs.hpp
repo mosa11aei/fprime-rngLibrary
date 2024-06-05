@@ -3,7 +3,13 @@
 
 namespace RNGTopology
 {
-    struct TopologyState {};
+    struct RNGTopologyState {
+        U32 initialSeed;
+    };
+
+    struct TopologyState {
+        RNGTopologyState rng_topology_state;
+    };
 }
 
 namespace Globals

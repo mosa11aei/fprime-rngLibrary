@@ -77,6 +77,8 @@ int main(int argc, char* argv[]) {
     inputs.hostname = hostname;
     inputs.port = port_number;
 
+    inputs.RNGTopology_state.initialSeed = 1;
+
     // Setup program shutdown via Ctrl-C
     signal(SIGINT, signalHandler);
     signal(SIGTERM, signalHandler);

@@ -1,3 +1,6 @@
+add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Interface/Input/")
+add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Interface/Output/")
+
 set(SOURCE_FILES
     "${CMAKE_CURRENT_LIST_DIR}/RNGTopology.fpp"
     "${CMAKE_CURRENT_LIST_DIR}/intentionally-empty.cpp"
