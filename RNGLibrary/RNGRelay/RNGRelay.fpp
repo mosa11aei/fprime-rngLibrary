@@ -1,17 +1,13 @@
 module RNGLibrary {
-    @ A component that releases random numbers to the GDS. Connected to a rate group.
-    active component RNG {
+    @ A relay component that takes the input random number and tosses it to an event
+    active component RNGRelay {
 
-        # command to set RNG seed
-        async command SET_RNG_SEED(seed: U32)
-        
-        # telemetry from the component
-        telemetry RNGValue: U32
-        telemetry RNGSeed: U32
+        # One async command/port is required for active components
+        # This should be overridden by the developers with a useful command/port
+        @ TODO
+        async input port receive: RNGTopologyConfig.RNGp
 
-        sync input port run: Svc.Sched
-
-        output port rngVal: RNGTopologyConfig.RNGp
+        event ReceivedNumber(value: U32) severity activity high id 0 format "Value received: {}"
 
         ##############################################################################
         #### Uncomment the following examples to start customizing your component ####
@@ -38,17 +34,11 @@ module RNGLibrary {
         @ Port for requesting the current time
         time get port timeCaller
 
-        @ Port for sending command registrations
-        command reg port cmdRegOut
+        @ Port for sending textual representation of events
+        text event port logTextOut
 
-        @ Port for receiving commands
-        command recv port cmdIn
-
-        @ Port for sending command responses
-        command resp port cmdResponseOut
-
-        @ Port for sending telemetry channels to downlink
-        telemetry port tlmOut
+        @ Port for sending events to downlink
+        event port logOut
 
     }
 }

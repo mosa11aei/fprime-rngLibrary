@@ -43,6 +43,8 @@ module MainDeployment {
     instance textLogger
     instance systemResources
 
+    instance rng_Relay
+
     # ----------------------------------------------------------------------
     # Pattern graph specifiers
     # ----------------------------------------------------------------------
@@ -100,6 +102,7 @@ module MainDeployment {
       rateGroup1.RateGroupMemberOut[0] -> tlmSend.Run
       rateGroup1.RateGroupMemberOut[1] -> fileDownlink.Run
       rateGroup1.RateGroupMemberOut[2] -> systemResources.run
+      rateGroup1.RateGroupMemberOut[3] -> RNGTopology.inputs.clock_in
 
       # Rate group 2
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup2] -> rateGroup2.CycleIn
@@ -107,7 +110,7 @@ module MainDeployment {
 
       # Rate group 3
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
-      rateGroupDriver.CycleOut[3] -> RNGTopology.rateGroup.CycleIn
+      # rateGroupDriver.CycleOut[3] -> RNGTopology.rateGroup.CycleIn
       rateGroup3.RateGroupMemberOut[0] -> $health.Run
       rateGroup3.RateGroupMemberOut[1] -> blockDrv.Sched
       rateGroup3.RateGroupMemberOut[2] -> bufferManager.schedIn
@@ -136,7 +139,7 @@ module MainDeployment {
     }
 
     connections MainDeployment {
-      # Add here connections to user-defined components
+      RNGTopology.outputs.RNGValue_out -> rng_Relay.receive
     }
 
   }

@@ -28,13 +28,21 @@ module RNGTopology {
             """
         }
 
+    instance inputs: RNGTopology.Input base id RNGTopologyConfig.RNGTopology_BASE_ID + 0x3000
+    instance outputs: RNGTopology.Output base id RNGTopologyConfig.RNGTopology_BASE_ID + 0x4000
+
     topology RNGTopology {
+        # subtopology interface components
+        instance inputs
+        instance outputs
+
         instance rng # RNG component instance
         instance rateGroup # rate group instance
 
-        connections MyWiring {
-            # we'll provide the rate group its cycle in our main deployment
-            rateGroup.RateGroupMemberOut[0] -> rng.run
+        connections Interface {
+            # connect the input ports to the RNG
+            inputs.clock -> rng.run
+            rng.rngVal -> outputs.RNGValue
         }
     } # end topology
 } # end MySubtopology

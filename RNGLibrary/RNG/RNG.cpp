@@ -39,7 +39,9 @@ namespace RNGLibrary
           NATIVE_INT_TYPE portNum,
           NATIVE_UINT_TYPE context)
   {
-    this->tlmWrite_RNGValue(rand());
+    U32 value = rand();
+    this->tlmWrite_RNGValue(value);
+    this->rngVal_out(0, value);
   }
 
   // ----------------------------------------------------------------------

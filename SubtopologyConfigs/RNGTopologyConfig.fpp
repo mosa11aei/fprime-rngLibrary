@@ -11,7 +11,7 @@ module RNGTopologyConfig {
         constant rateGroup = 150
     }
 
-    port RNGValue (
+    port RNGp (
         m_value: U32
     )
 }

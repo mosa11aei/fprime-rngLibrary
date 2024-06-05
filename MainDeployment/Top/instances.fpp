@@ -121,4 +121,9 @@ module MainDeployment {
 
   instance comStub: Svc.ComStub base id 0x4B00
 
+  instance rng_Relay: RNGLibrary.RNGRelay base id 0x4C00 \
+    queue size Default.QUEUE_SIZE \
+    stack size Default.STACK_SIZE \
+    priority 100
+
 }
